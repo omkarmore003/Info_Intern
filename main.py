@@ -2,7 +2,7 @@ import requests
 import pandas as pd
 
 # Constants
-API_KEY = '4cbb657dc0694e769d1ee8aae7dfd427'  # Replace with your actual API key
+API_KEY = '4cbb657dc0694e769d1ee8aae7dfd427'  
 BASE_URL = 'https://newsapi.org/v2/everything'
 
 def fetch_news(query, from_date, page=1):
@@ -13,7 +13,7 @@ def fetch_news(query, from_date, page=1):
         'sortBy': 'publishedAt',  # Sort articles by publication date
         'apiKey': API_KEY,     # Your API key
         'page': page,          # Pagination (default 1)
-        'pageSize': 20         # Number of articles per page (max 100 for paid plans)
+        'pageSize': 20         # Number of articles per page
     }
     response = requests.get(BASE_URL, params=params)
     
