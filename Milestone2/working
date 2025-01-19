@@ -1,0 +1,57 @@
+1. Setting Up API Keys and Libraries:
+The script uses OpenAI's GPT model for risk analysis, News API to fetch the latest coffee-related news, and Meta's LLaMA (BART) for sentiment analysis.
+It imports necessary libraries like requests, pandas, and transformers, and sets up the API keys for both OpenAI and News API.
+
+2. Defining Risk-Related Keywords:
+The script defines an expanded_risk_keywords list, containing terms and phrases like "disruption", "storm", "drought", "coffee price increase", etc., that indicate potential disruptions in the coffee supply chain.
+This list is used to detect possible risks in the news articles.
+
+3. Fetching Coffee News:
+The fetch_coffee_news() function sends a query to the News API to fetch the latest news articles that are related to coffee production, trade, crops, prices, and specific coffee-producing countries like Brazil, Vietnam, Colombia, etc.
+It formats the query to get relevant news published in the last 30 days and processes the response into a pandas DataFrame with essential fields: Title, Description, Content, Published At, and URL.
+
+4. Sentiment Analysis Using LLaMA:
+The analyze_sentiment() function uses Meta’s LLaMA (BART) model for sentiment analysis.
+It processes the article content and returns the sentiment label (e.g., positive, negative, neutral) and the sentiment score (indicating strength).
+
+5. Risk Analysis Using OpenAI GPT:
+The analyze_risk() function sends the article content to OpenAI's GPT model (using the gpt-4o-mini version) to assess the risk level for the coffee supply chain.
+The assistant in the system message is designed to analyze the article for supply chain risks, and it returns a risk score between 0 and 1, with higher values indicating more risk.
+Additionally, the function checks for the presence of risk-related keywords to detect potential disruptions, even if the GPT response doesn't directly return a score.
+
+6. Categorizing Risk Level:
+Based on the risk score obtained from OpenAI's GPT model, the categorize_risk_level() function classifies the risk into three levels:
+High: Risk score ≥ 0.7
+Medium: Risk score between 0.4 and 0.7
+Low: Risk score < 0.4
+
+7. Combining Sentiment and Risk Scores:
+The combine_sentiment_and_risk() function combines the sentiment and risk scores into a decision matrix:
+High sentiment and high risk → "High Risk - Negative Sentiment"
+Low sentiment and high risk → "High Risk - Neutral/Positive Sentiment"
+etc.
+
+8. Processing News and Analyzing Sentiment & Risk:
+The process_and_analyze_sentiment_and_risk() function loops through each news article in the DataFrame, analyzing the sentiment and risk for each one. It calls the sentiment and risk analysis functions for each article's content and stores the results in a new DataFrame.
+
+9. Saving Results:
+The processed data is saved in three CSV files:
+coffee_related_news_data.csv: Contains the fetched coffee news articles.
+sentiment_and_risk_analysis_results.csv: Contains sentiment and risk analysis results for each article.
+risky_articles.csv: Contains only those articles that have a risk score above 0.5 or detected risks, which are considered "risky" for the coffee supply chain.
+
+10. Displaying Risky Articles:
+If risky articles are found (based on the risk score or detected keywords), they are printed to the console along with their sentiment, risk analysis, and combined analysis.
+If no risky articles are found, the script informs the user.
+
+11. Main Function:
+The main function orchestrates the entire process. It fetches coffee-related news, processes the articles, performs sentiment and risk analysis, saves the results, and identifies risky articles.
+
+Summary of Workflow:
+Fetch coffee-related news: From the last 30 days.
+Analyze sentiment: Using Meta's LLaMA model (BART).
+Analyze risk: Using OpenAI's GPT model, considering both risk keywords and GPT-generated analysis.
+Categorize risk: Based on the risk score from GPT.
+Combine sentiment and risk analysis: Using a decision matrix.
+Save results: In three CSV files.
+Display risky articles: With relevant analysis.
