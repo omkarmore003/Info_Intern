@@ -1,0 +1,35 @@
+Database Connection:
+The script establishes a connection to a MySQL database using provided credentials (host, user, password, database).
+
+Table Creation:
+It checks if three tables (inventory, risk_data, adjusted_inventory) exist in the database. If they don't exist, they are created.
+The inventory table holds data on countries, their stock levels, and thresholds.
+The risk_data table stores the risk information from the CSV file, including the title, risk level, stock adjustment value, and publication date.
+The adjusted_inventory table stores the adjusted stock levels for each country based on the risk data, along with the adjustment values and publication date.
+
+Mock Data Insertion:
+The script inserts mock inventory data into the inventory table, representing stock levels for different coffee-producing countries. This data is only inserted once using INSERT IGNORE to prevent duplicates on subsequent script runs.
+
+Reading Risk Data:
+The risk data is loaded from a CSV file (sentiment_and_risk_analysis_results.csv) using the Pandas library. The data contains columns such as Title, Risk Level, and Published At.
+The Published At column is converted into a proper date format.
+
+Stock Adjustment Logic:
+The script iterates over each row in the risk data.
+For each row, it checks if the Title (which corresponds to a country) matches one of the countries in the mock inventory.
+Based on the Risk Level in the row, it adjusts the stock level for the corresponding country:
+High Risk: Decrease stock by 20%.
+Medium Risk: No change to stock.
+Low Risk: Increase stock by 5%.
+
+Inserting Adjusted Data:
+After calculating the stock adjustment, the script checks if an entry for the country and the specific Published At date already exists in the adjusted_inventory table.
+If an entry exists and the current Published At date is newer, the stock level is updated with the new adjustment.
+If no entry exists for that country and date, a new entry is added to the adjusted_inventory table.
+
+Storing Risk Data:
+The processed risk data (with title, risk level, stock adjustment, and publication date) is inserted into the risk_data table for future reference.
+
+Display Adjusted Inventory:
+Finally, the script fetches and prints the updated stock adjustments from the adjusted_inventory table.
+The code essentially automates the process of adjusting stock levels for countries based on the risk data and updates the database accordingly.
