@@ -13,7 +13,7 @@ The project consists of four milestones:
 
 ## Features
 ### Milestone 1: Global Data Collection
-- **News Data Collection**: Fetches coffee-related news from global sources using the News API, with support for pagination to gather extensive data.
+- **News Data Collection**: Fetches articles about coffee production, trade, prices, and climate-related issues from the News API.
 - **Weather Data Collection**: Collects weather information for major coffee-producing regions using the OpenWeatherMap API.
 - **Data Storage**: Saves the collected news and weather data in CSV files for further analysis.
 
