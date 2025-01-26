@@ -1,60 +1,142 @@
-# Info_Intern
-Project Title:
-AI-Driven Supply Chain Disruption Predictor and Inventory Optimization System
+# AI-Driven Supply Chain Disruption Predictor and Inventory Optimization System
 
-Project Overview:
-This project aims to revolutionize supply chain management through the development of an advanced AI-powered system. The solution monitors global supply chain data, predicts potential disruptions, and optimizes inventory levels dynamically. It integrates natural language processing (NLP), machine learning, and ERP systems, providing businesses with real-time insights, risk management tools, and inventory recommendations to maintain operational continuity.
+## Overview
+This project is an AI-driven system designed to monitor, predict, and mitigate risks in the coffee bean supply chain. By combining sentiment analysis, risk assessment, and inventory optimization, it provides real-time insights and automates stock adjustments to ensure smooth supply chain operations.
 
-Goals and Objectives:
-1.	Predict Supply Chain Disruptions:
-o	Leverage NLP and machine learning to analyze data from news, supplier information, and transportation trends.
-o	Identify and quantify potential risks in the supply chain.
-2.	Optimize Inventory Levels:
-o	Dynamically adjust inventory levels based on risk predictions and demand.
-o	Prevent overstocking and understocking to reduce losses and improve efficiency.
-3.	Provide Real-Time Alerts and Integration:
-o	Send critical alerts via Slack, Email, or other communication tools.
-o	Integrate with ERP systems like SAP to automate inventory adjustments and reordering.
-4.	Enhance Decision-Making and Operational Resilience:
-o	Offer actionable insights through dashboards and predictive analytics.
+The project consists of four milestones:
+1. **Global Data Collection**
+2. **Global Data Monitoring and Analysis Engine**
+3. **Predictive Disruption Modeling and ERP Integration**
+4. **Real-Time Alert and Reporting Dashboard Deployment**
 
-Key Modules:
-1. Global Data Monitoring and Analysis Engine
-•	Functionality: 
-o	Monitors global data sources, including news articles, supplier information, and logistics updates.
-o	Uses NLP to extract relevant insights and detect trends impacting supply chains.
-•	Technologies: 
-o	OpenAI GPT, Meta LLaMA for NLP and text analysis.
-o	APIs for real-time news and data aggregation.
-2. Predictive Disruption Modeling System
-•	Functionality: 
-o	Utilizes machine learning models to forecast potential disruptions and their impact.
-o	Generates risk scores and probability assessments for various scenarios.
-•	Technologies: 
-o	Machine learning frameworks like Scikit-learn or TensorFlow.
-o	Features include delivery delays, order urgency, and transportation data.
-3. ERP Integration and Inventory Adjustment Module
-•	Functionality: 
-o	Integrates seamlessly with ERP systems (e.g., SAP) to synchronize inventory data.
-o	Recommends inventory adjustments and automates reordering processes.
-•	Technologies: 
-o	RESTful APIs for ERP integration.
-o	Inventory optimization algorithms based on demand forecasts and disruption risks.
-4. Real-Time Alert and Reporting Dashboard
-   
-•	Functionality: 
-o	Delivers instant notifications of disruption risks and inventory adjustments via Slack or Email.
-o	Provides comprehensive dashboards with visualizations of risks, predictions, and inventory status.
-•	Technologies: 
-o	Visualization tools like Tableau or Plotly.
-o	Communication integrations using Slack and email APIs.
+---
 
-Expected Outcomes:
-•	Accurate Prediction of Disruptions:
-o	Improved forecasting of supply chain risks through data-driven insights.
-•	Dynamic Inventory Optimization:
-o	Significant reduction in overstocking and stockouts by adjusting inventory dynamically.
-•	Real-Time Notifications:
-o	Immediate alerts for decision-makers to act proactively.
-•	Enhanced Efficiency and Resilience:
-o	Reduction in supply chain-related losses and better preparedness for disruptions.
+## Features
+### Milestone 1: Global Data Collection
+- **News Data Collection**: Fetches coffee-related news from global sources using the News API, with support for pagination to gather extensive data.
+- **Weather Data Collection**: Collects weather information for major coffee-producing regions using the OpenWeatherMap API.
+- **Data Storage**: Saves the collected news and weather data in CSV files for further analysis.
+
+### Milestone 2: Global Data Monitoring and Analysis Engine
+- **Coffee News Monitoring**: Fetches coffee-related news from global sources using the News API.
+- **Sentiment Analysis**: Analyzes the sentiment of news articles using the Meta LLaMA pipeline.
+- **Risk Analysis**: Assesses potential supply chain risks using OpenAI's GPT API.
+- **Data Aggregation**: Saves sentiment and risk analysis results in CSV files for further processing.
+
+### Milestone 3: Predictive Disruption Modeling and ERP Integration
+- **MySQL Database Integration**: Stores inventory and risk data for analysis and adjustments.
+- **Stock Adjustment Rules**: Adjusts inventory levels based on risk severity (High, Medium, Low).
+- **Automated Inventory Management**: Tracks and updates stock levels in the database.
+
+### Milestone 4: Real-Time Alert and Reporting Dashboard Deployment
+- **Interactive Dashboard**: Visualizes risk levels and inventory adjustments using Flask and Matplotlib.
+- **HTML Dashboard Template**: Provides a web-based interface for viewing visualizations and insights.
+- **Email Notifications**: Sends alerts for critical risks and stock adjustments.
+- **Real-Time Insights**: Provides actionable insights through a web-based interface.
+
+---
+
+## Installation
+### Prerequisites
+- Python 3.8+
+- MySQL Database
+- News API Key
+- OpenWeatherMap API Key
+- OpenAI API Key
+- Flask
+
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-repo.git
+   cd your-repo
+   ```
+2. Install required Python packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+3. Set up the MySQL database:
+   - Update database credentials in `inventory.py` and `main.py`.
+   - Run the `inventory.py` script to create tables and insert mock data:
+     ```bash
+     python inventory.py
+     ```
+4. Obtain API keys:
+   - Get a News API key from [NewsAPI](https://newsapi.org/).
+   - Get an OpenWeatherMap API key from [OpenWeatherMap](https://openweathermap.org/).
+   - Get an OpenAI API key from [OpenAI](https://openai.com/).
+   - Update the API keys in `ss.py` and the milestone 1 script.
+5. Run the Flask app:
+   ```bash
+   python main.py
+   ```
+6. Access the dashboard at [http://127.0.0.1:5000/dashboard](http://127.0.0.1:5000/dashboard).
+
+---
+
+## Usage
+### Milestone 1: Data Collection
+1. Run the milestone 1 script to fetch news and weather data:
+   ```bash
+   python news.py
+   and python weather.py
+
+   ```
+2. The script generates two CSV files:
+   - `coffee_supply_chain_news.csv`: Contains news data.
+   - `coffee_producing_regions_weather.csv`: Contains weather data for coffee-producing regions.
+
+### Milestone 2: Data Monitoring and Analysis
+1. Run the `ss.py` script to analyze sentiment and risks:
+   ```bash
+   python ss.py
+   ```
+2. The script generates three CSV files:
+   - `coffee_related_news_data.csv`: Raw news data.
+   - `sentiment_and_risk_analysis_results.csv`: Combined sentiment and risk analysis.
+   - `risky_articles.csv`: Articles flagged for potential risks.
+
+### Milestone 3: Predictive Disruption Modeling
+1. Ensure the `sentiment_and_risk_analysis_results.csv` file is present.
+2. Run the `inventory.py` script to adjust stock levels based on risks:
+   ```bash
+   python inventory.py
+   ```
+3. Check the `adjusted_inventory` table in the database for updated stock levels.
+
+### Milestone 4: Real-Time Dashboard
+1. Launch the Flask app using `main.py`:
+   ```bash
+   python main.py
+   ```
+2. Visualize:
+   - Risk Levels Distribution
+   - Inventory Adjustments
+3. Review email notifications for critical risks and stock adjustments.
+4. Use the HTML template (`dashboard.html`) for a styled and user-friendly interface.
+
+---
+
+## Files
+1. **milestone1**: Fetches news and weather data for coffee-producing regions.
+2. **milestone2**: Fetches news, performs sentiment and risk analysis, and saves results.
+3. **milestone3**: Handles inventory management and adjusts stock levels based on risks.
+4. **milestone4**: Hosts the Flask-based dashboard and sends email alerts. Provides a styled web-based interface for visualizing risk and inventory adjustments.
+
+---
+
+## Technologies Used
+- **APIs**: NewsAPI, OpenWeatherMap, OpenAI GPT-4
+- **Database**: MySQL
+- **Data Analysis**: Pandas, Matplotlib
+- **Web Framework**: Flask
+- **Machine Learning Models**: Meta LLaMA, Transformers
+
+---
+
+## Acknowledgments
+- [NewsAPI](https://newsapi.org/)
+- [OpenWeatherMap](https://openweathermap.org/)
+- [OpenAI](https://openai.com/)
+- [Flask](https://flask.palletsprojects.com/)
+
