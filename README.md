@@ -134,6 +134,16 @@ The project consists of four milestones:
 
 ---
 
+Author
+
+Omkar More
+
+License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
+
 ## Acknowledgments
 - [NewsAPI](https://newsapi.org/)
 - [OpenWeatherMap](https://openweathermap.org/)
