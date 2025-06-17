@@ -48,8 +48,8 @@ The project consists of four milestones:
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo.git
-   cd your-repo
+   git clone https://github.com/omkarmore003/Info_Intern
+   cd Info_Intern
    ```
 2. Install required Python packages:
    ```bash
@@ -134,13 +134,14 @@ The project consists of four milestones:
 
 ---
 
-Author
+## Author
 
-Omkar More
+**Omkar More**
 
-License
+---
+##  License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
 
 ---
 
